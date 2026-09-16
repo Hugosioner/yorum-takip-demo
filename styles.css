@@ -539,8 +539,10 @@ textarea{width:100%;background:var(--panel2);color:var(--text);border:1px solid 
 .plat{position:relative;overflow:hidden}
 .plat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
 .plat.google{background:#fff}.plat.google img{object-fit:contain;padding:14%}
-/* Trendyol ikonu beyaz çerçevesi kesilmiş hâliyle (assets/logos/trendyol.png), zemin turuncu; kırpma gerekmez */
-.plat.trendyol{background:var(--p-trendyol)}
+/* Trendyol'un tek simgesi kelime markası; 32px'te okunmuyor ve favicon'u beyaz çerçeveli → turuncu zemin, beyaz "ty" */
+.plat.trendyol{background:var(--p-trendyol);font-size:15px;font-weight:900;letter-spacing:-.03em;text-transform:lowercase}
+.plat.trendyol img{display:none}
+.plat-mini .plat.trendyol{font-size:9px}
 /* Migros'un favicon'u renkli şeritli; küçük boyutta kirli görünüyor → markanın düz biçimi: turuncu zemin, beyaz M */
 .plat.migros img{display:none}
 .plat.migros{font-size:17px;font-weight:900;letter-spacing:-.02em}
