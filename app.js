@@ -6,7 +6,7 @@
   const PLAT = {
     yemeksepeti: { name: 'Yemeksepeti',    short: 'YS', loc: "Yemeksepeti'nde" },
     getir:       { name: 'Getir Yemek',    short: 'GT', loc: "Getir Yemek'te" },
-    trendyol:    { name: 'Trendyol Yemek', short: 'TY', loc: "Trendyol Yemek'te" },
+    trendyol:    { name: 'Trendyol Yemek', short: 'ty', loc: "Trendyol Yemek'te" },
     google:      { name: 'Google',         short: 'G',  loc: "Google Haritalar'da" },
     tripadvisor: { name: 'TripAdvisor',    short: 'TA', loc: "TripAdvisor'da" },
     migros:      { name: 'Migros Yemek',   short: 'M',  loc: "Migros Yemek'te" },
