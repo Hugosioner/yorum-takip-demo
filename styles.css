@@ -9,6 +9,9 @@
   --p-yemeksepeti:#fa0050;--p-getir:#5d3ebc;--p-trendyol:#f27a1a;--p-google:#4285f4;--p-tripadvisor:#34e0a1;--p-migros:#ff6a00;
 }
 *{box-sizing:border-box}
+/* Mobil: çift dokunma yakınlaştırması kapalı (touch-action); parmakla yakınlaştırma viewport meta ile (Android). iOS Safari parmak yakınlaştırmasını kapatmaya izin vermez. */
+html,body{touch-action:pan-x pan-y}
+button,a,.chip,.nav-item,.seg button{touch-action:manipulation}
 .ic{width:18px;height:18px;flex-shrink:0;vertical-align:-3px}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:14px;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
