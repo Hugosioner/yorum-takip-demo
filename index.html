@@ -41,8 +41,8 @@
         <button type="button" class="role-card on" data-role="admin"><span data-icon="layers"></span>Yönetici</button>
         <button type="button" class="role-card" data-role="manager"><span data-icon="building"></span>Şube müdürü</button>
       </div>
-      <label class="field">E-posta<input id="login-email" type="text" readonly></label>
-      <label class="field">Şifre<input type="password" value="demo-demo" readonly></label>
+      <label class="field">E-posta<input id="login-email" type="text" readonly autocomplete="off" tabindex="-1"></label>
+      <label class="field">Şifre<input id="login-pass" type="password" value="demo-demo" readonly autocomplete="new-password" tabindex="-1"></label>
       <div id="branch-pick" hidden>
         <label class="field">Şube<select id="branch-select"></select></label>
       </div>
