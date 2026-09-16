@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SushiCo Yorum Takip Merkezi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- GİRİŞ -->
+<div id="login" class="login">
+  <!-- Sol: ürün hikâyesi. Giriş öncesi ekran: şirket verisi (yorum, şube, rakam) gösterilmez, yalnız logolar ve özellikler. -->
+  <section class="login-hero">
+    <div class="brand">
+      <div class="brand-mark"><img src="assets/sushico.png" alt="SushiCo"></div>
+      <div>
+        <div class="brand-name">SushiCo Yorum Takip Merkezi</div>
+        <div class="brand-sub">Şubelere gelen tüm yorumlar, tek yerde</div>
+      </div>
+    </div>
+    <h1 class="hero-h">Her yorum, geldiği saniye doğru müdürün telefonunda.</h1>
+    <p class="hero-p">Yemeksepeti, Getir, Trendyol, Google, TripAdvisor ve Migros Yemek'ten gelen her yorum tek panelde toplanır, şube müdürüne anında bildirim gider ve yönetim kimin ne zaman müdahale ettiğini görür.</p>
+    <div class="hero-plats" id="hero-plats"></div>
+    <ul class="hero-feats">
+      <li><span data-icon="zap"></span><div><b>Anlık bildirim</b>Yorum düştüğü saniye şube müdürünün ekranında.</div></li>
+      <li><span data-icon="check"></span><div><b>Müdahale izi</b>Ulaşıldı, görüşüldü, çözüldü: her yorumun yanında kim, ne zaman, ne yaptı.</div></li>
+      <li><span data-icon="users"></span><div><b>Müdür karnesi</b>Yıldız değil davranış ölçülür: kaç saatte dönüyor, kaçını kapatıyor.</div></li>
+    </ul>
+  </section>
+
+  <!-- Sağ: giriş formu. Demo: şifre sorulmaz, rol ve şube seçilir. -->
+  <section class="login-form">
+    <form class="form-card" id="login-form" autocomplete="off">
+      <h2>Panele giriş</h2>
+      <p class="lead">Demo sürümü: rolünüzü seçin, şifre sorulmaz.</p>
+      <div class="seg role-seg" role="group" aria-label="Rol">
+        <button type="button" class="role-card on" data-role="admin"><span data-icon="layers"></span>Yönetici</button>
+        <button type="button" class="role-card" data-role="manager"><span data-icon="building"></span>Şube müdürü</button>
+      </div>
+      <label class="field">E-posta<input id="login-email" type="text" readonly></label>
+      <label class="field">Şifre<input type="password" value="demo-demo" readonly></label>
+      <div id="branch-pick" hidden>
+        <label class="field">Şube<select id="branch-select"></select></label>
+      </div>
+      <button id="login-go" type="submit" class="btn btn-primary btn-lg">Giriş yap <span data-icon="arrow"></span></button>
+      <p class="form-foot">Gerçek sistemde kullanıcı adı, şifre ve SMS doğrulama ile girilir.</p>
+    </form>
+  </section>
+</div>
+
+<!-- UYGULAMA -->
+<div id="app" class="app" hidden>
+  <aside class="sidebar">
+    <button class="brand small" id="brand-home" title="Ana sayfa">
+      <div class="brand-mark"><img src="assets/sushico.png" alt="SushiCo"></div>
+      <div><div class="brand-name">SushiCo</div><div class="brand-sub">Yorum Takip Merkezi</div></div>
+    </button>
+    <nav id="nav"></nav>
+    <div class="sidebar-foot">
+      <div id="user-chip" class="user-chip"></div>
+      <button id="theme-toggle" class="btn btn-ghost btn-sm" aria-label="Temayı değiştir"></button>
+      <button id="logout" class="btn btn-ghost btn-sm"><span data-icon="logout"></span>Çıkış yap</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button id="back" class="back" hidden title="Geri (nereden geldiysen oraya)"><span data-icon="arrow"></span>Geri</button>
+      <div id="crumbs" class="crumbs"></div>
+      <div class="topbar-actions">
+        <div id="range" class="seg" role="group" aria-label="Dönem seçimi"></div>
+        <div class="live" title="Canlı izleniyor"><span class="dot"></span><span class="live-text">Canlı</span></div>
+      </div>
+    </header>
+    <section id="view" class="view"></section>
+  </main>
+</div>
+
+<!-- Bildirim önizlemesi (panel içi; WhatsApp kanalı sonraki sürümde) -->
+<div id="wa-stack" class="wa-stack" aria-live="polite"></div>
+
+<!-- Yorum detay / aksiyon paneli -->
+<div id="drawer" class="drawer" hidden>
+  <div class="drawer-backdrop"></div>
+  <div class="drawer-panel">
+    <div id="drawer-body"></div>
+  </div>
+</div>
+
+<script src="data/reviews.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
