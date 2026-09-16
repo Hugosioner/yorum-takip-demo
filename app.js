@@ -9,7 +9,7 @@
     trendyol:    { name: 'Trendyol Yemek', short: 'TY', loc: "Trendyol Yemek'te" },
     google:      { name: 'Google',         short: 'G',  loc: "Google Haritalar'da" },
     tripadvisor: { name: 'TripAdvisor',    short: 'TA', loc: "TripAdvisor'da" },
-    migros:      { name: 'Migros Yemek',   short: 'MY', loc: "Migros Yemek'te" },
+    migros:      { name: 'Migros Yemek',   short: 'M',  loc: "Migros Yemek'te" },
   };
   const logoImg = p => `<img src="assets/logos/${p}.png" alt="" onerror="this.remove()">`;
   // Metin yanı küçük logo: "[logo] Yemeksepeti"
