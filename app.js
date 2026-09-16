@@ -460,7 +460,14 @@
       return { r, hrs, fresh: hrs < 1 };
     }).sort((a, b) => (b.fresh - a.fresh) || (b.hrs - a.hrs));
     const PEEK = 5;
-    const pending = pendingAll.slice(0, PEEK);
+    // Gösterilen 5: her platformdan en acil olan önce alınır, kalan yerler aciliyete göre dolar;
+    // böylece liste tek platforma (5 Yemeksepeti üst üste) dönmez. Gösterilenler yine en uzun bekleyen üstte.
+    const pickShown = () => {
+      const seen = new Set(), first = [], rest = [];
+      for (const p of pendingAll) { if (!seen.has(p.r.platform) && first.length < PEEK) { seen.add(p.r.platform); first.push(p); } else rest.push(p); }
+      return first.concat(rest).slice(0, PEEK).sort((a, b) => (b.fresh - a.fresh) || (b.hrs - a.hrs));
+    };
+    const pending = pickShown();
     const overdue = pendingAll.filter(p => p.hrs >= 24).length;
     const inProgress = reds.filter(r => r.status === 'ulasiliyor' || r.status === 'baglanti');
     const resolvedToday = reds.filter(r => r.status === 'cozuldu' && r.actionAt && new Date(r.actionAt) >= t0);
@@ -534,7 +541,7 @@
         <div class="dash-cols">
           <div class="dash-main">
             <div class="panel"><div class="panel-head"><h3>Günlük ortalama puan</h3><span class="muted">son ${days} gün, tüm şubeler</span></div>${trendChart(days)}</div>
-            <div class="panel"><div class="panel-head"><h3>Müdahale bekleyenler</h3><span class="muted">${pendingAll.length > PEEK ? `${pendingAll.length} yorumdan ilk ${PEEK}'i, en uzun bekleyen üstte` : pendingAll.length ? 'en uzun bekleyen üstte' : ''}</span></div>
+            <div class="panel"><div class="panel-head"><h3>Müdahale bekleyenler</h3><span class="muted">${pendingAll.length > PEEK ? `${pendingAll.length} yorumdan ${PEEK}'i, en uzun bekleyen üstte` : pendingAll.length ? 'en uzun bekleyen üstte' : ''}</span></div>
               <div class="brief-list compact">
               ${pending.length ? pending.map(({ r, hrs, fresh }) => { const b = branch(r.branchId); return `
                 <button class="brow ${fresh ? 'fresh' : ''} ${hrs >= 24 ? 'over' : ''}" data-id="${r.id}">
